@@ -1,15 +1,24 @@
-// import logo from './logo.svg';
-import './App.css';
-import {IconStyle} from './assets/iconfont/iconfont';
-import {GlobalStyle} from './style';
+import React from 'react'
+import { Provider } from 'react-redux'
+import { GlobalStyle } from './style'
+import { renderRoutes } from 'react-router-config'
+import { IconStyle } from './assets/iconfont/iconfont'
+import store from './store/index'
+import routes from './routes/index.js'
+import { HashRouter } from 'react-router-dom';
+
 
 function App() {
   return (
-    <div className="App">
-      <GlobalStyle></GlobalStyle>
-      <IconStyle></IconStyle>
-      <i className="iconfont">&#xe62b;</i>
-    </div>
+    <Provider store={store}>
+      <HashRouter>
+        <div className="App">
+          <GlobalStyle></GlobalStyle>
+          <IconStyle></IconStyle>
+          {renderRoutes(routes)}
+        </div>
+      </HashRouter>
+    </Provider>
   );
 }
 
